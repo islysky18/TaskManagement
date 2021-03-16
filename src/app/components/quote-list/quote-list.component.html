@@ -1,5 +1,5 @@
-<p>quote-list works!</p>
 <!-- {{ dataSource | json }} -->
+<button mat-raised-button (click)="openDialog()">Add Quote</button>
 <br />
 <div>
   <mat-form-field>
@@ -51,9 +51,46 @@
     <ng-container matColumnDef="Action">
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
-        <button (click)="navigateToDetail()"><i class="far fa-eye"></i></button>
-        <button (click)="navigateToEdit()"><i class="fas fa-edit"></i></button>
-        <button (click)="navigateToDelete()">
+        <button
+          (click)="
+            openDetailDialog(
+              element.QuoteID,
+              element.QuoteType,
+              element.Contact,
+              element.Task,
+              element.DueDate,
+              element.TaskType
+            )
+          "
+        >
+          <i class="far fa-eye"></i></button
+        >&#160;&#160;
+        <button
+          (click)="
+            openEditDialog(
+              element.QuoteID,
+              element.QuoteType,
+              element.Contact,
+              element.Task,
+              element.DueDate,
+              element.TaskType
+            )
+          "
+        >
+          <i class="fas fa-edit"></i></button
+        >&#160;&#160;
+        <button
+          (click)="
+            openDeleteDialog(
+              element.QuoteID,
+              element.QuoteType,
+              element.Contact,
+              element.Task,
+              element.DueDate,
+              element.TaskType
+            )
+          "
+        >
           <i class="far fa-trash-alt"></i>
         </button>
       </td>

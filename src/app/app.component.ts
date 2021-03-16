@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { QuoteCreateComponent } from './components/quote-create/quote-create.component';
+import { QuoteDetailsComponent } from './components/quote-details/quote-details.component';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,9 @@ import { QuoteCreateComponent } from './components/quote-create/quote-create.com
 })
 export class AppComponent {
   title = 'TaskManagement';
-  constructor(public dialog: MatDialog) {}
-  openDialog(): void {
+  constructor(private dialog: MatDialog) {}
+  openDialog() {
     const dialogRef = this.dialog.open(QuoteCreateComponent, {});
-
     dialogRef.afterClosed().subscribe((result) => {});
   }
 }

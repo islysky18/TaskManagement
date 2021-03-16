@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuoteCreateComponent } from './components/quote-create/quote-create.component';
@@ -26,6 +28,7 @@ import { QuoteUpdateComponent } from './components/quote-update/quote-update.com
 import { QuoteService } from './services/quote.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { QuoteDeleteComponent } from './components/quote-delete/quote-delete.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +37,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     QuoteDetailsComponent,
     QuoteListComponent,
     QuoteUpdateComponent,
+    QuoteDeleteComponent,
   ],
   imports: [
     BrowserModule,
     MatSelectModule,
+    ReactiveFormsModule,
     MatSortModule,
     MatToolbarModule,
     MatButtonModule,
@@ -45,7 +50,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatListModule,
     MatListModule,
     AppRoutingModule,
     HttpClientModule,
@@ -58,8 +62,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
   ],
-  providers: [QuoteService],
+  providers: [
+    QuoteService,
+    MatDialog,
+    MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [QuoteDetailsComponent],
 })
 export class AppModule {}
