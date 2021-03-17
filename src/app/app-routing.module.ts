@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './components/home/home.component';
 import { QuoteDetailsComponent } from './components/quote-details/quote-details.component';
 import { QuoteListComponent } from './components/quote-list/quote-list.component';
 import { QuoteUpdateComponent } from './components/quote-update/quote-update.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
-  { path: 'quotes', component: QuoteDetailsComponent },
-  { path: 'update', component: QuoteUpdateComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'quotes', component: QuoteListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'login',
+    component: UserComponent,
+  },
+
   // { path: 'quote', component: QuoteListComponent },
 ];
 

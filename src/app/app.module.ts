@@ -29,6 +29,10 @@ import { QuoteService } from './services/quote.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { QuoteDeleteComponent } from './components/quote-delete/quote-delete.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UserComponent } from './components/user/user.component';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,9 @@ import { QuoteDeleteComponent } from './components/quote-delete/quote-delete.com
     QuoteListComponent,
     QuoteUpdateComponent,
     QuoteDeleteComponent,
+    LoginComponent,
+    SignupComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +77,7 @@ import { QuoteDeleteComponent } from './components/quote-delete/quote-delete.com
     MatDialogModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
   entryComponents: [QuoteDetailsComponent],

@@ -6,9 +6,9 @@ import {
   ElementRef,
 } from '@angular/core';
 import { QuoteService } from 'src/app/services/quote.service';
-import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { QuoteDetailsComponent } from '../quote-details/quote-details.component';
@@ -33,6 +33,7 @@ export interface Quote {
 export class QuoteListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; // pagenation
   @ViewChild('input', { static: true }) input: ElementRef; //filter
+  @ViewChild(MatSort) sort: MatSort; //sort
   displayedColumns: string[] = [
     'QuoteID',
     'QuoteType',
@@ -48,6 +49,7 @@ export class QuoteListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   constructor(
@@ -61,25 +63,14 @@ export class QuoteListComponent implements OnInit, AfterViewInit {
     this.getData();
     console.log(this.dataSource);
   }
-  // readQuotes() {
-  //   this.quoteService.readAll().subscribe(
-  //     (data) => {
-  //       this.dataSource = data;
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       console.log("I'm finished");
-  //     }
-  //   );
-  // }
+
   getData() {
     this.quoteService.readAll().subscribe(
       (response: any) => {
         this.quotes = response;
         this.dataSource = new MatTableDataSource<any>(this.quotes);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       (error) => {
         console.log(error);
@@ -177,5 +168,10 @@ export class QuoteListComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(() => {
       this.getData();
     });
+  }
+
+  Logout() {
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
   }
 }

@@ -26,7 +26,7 @@ export class QuoteUpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data,
     public quoteService: QuoteService
   ) {
-    this.description = 'Update';
+    this.description = 'Updat Task';
     this.quoteID = data.quoteID;
     this.quoteType = data.quoteType;
     this.contact = data.contact;
