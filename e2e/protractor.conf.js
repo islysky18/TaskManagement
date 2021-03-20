@@ -28,6 +28,7 @@ exports.config = {
     });
     // @ts-ignore
     jasmine.getEnv().addReporter(
+      // @ts-ignore
       new SpecReporter({
         spec: {
           displayStacktrace: StacktraceOption.PRETTY,
