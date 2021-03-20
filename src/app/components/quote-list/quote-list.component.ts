@@ -44,6 +44,8 @@ export class QuoteListComponent implements OnInit, AfterViewInit {
     'Action',
   ];
 
+  title = 'Tasks Details';
+
   dataSource = new MatTableDataSource<any>();
   quotes: any[];
 

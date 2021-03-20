@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { QuoteService } from 'src/app/services/quote.service';
@@ -36,11 +36,11 @@ export class QuoteCreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      QuoteType: [this.quoteType, []],
-      Contact: [this.contact, []],
-      Task: [this.task, []],
-      TaskType: [this.taskType, []],
-      DueDate: [this.dueDate, []],
+      QuoteType: [this.quoteType, [Validators.required]],
+      Contact: [this.contact, [Validators.required]],
+      Task: [this.task, [Validators.required]],
+      TaskType: [this.taskType, [Validators.required]],
+      DueDate: [this.dueDate, [Validators.required]],
     });
   }
 

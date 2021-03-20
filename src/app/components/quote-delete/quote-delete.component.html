@@ -1,4 +1,3 @@
-<p>quote-details works!</p>
 <h2 mat-dialog-title>{{ description }}</h2>
 
 <mat-dialog-content [formGroup]="form">
@@ -33,6 +32,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Cancel</button>
-  <button class="mat-raised-button mat-primary" (click)="save()">Delete</button>
+  <button class="mat-raised-button btn-secondary" (click)="close()">
+    <i class="far fa-times-circle">&#160;&#160;</i>Cancel</button
+  >&#160;
+  <button class="mat-raised-button btn-danger" (click)="save()">Delete</button>
 </mat-dialog-actions>

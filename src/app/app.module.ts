@@ -34,6 +34,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './auth/auth.guard';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +72,7 @@ import { AuthGuard } from './auth/auth.guard';
     MatInputModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     QuoteService,

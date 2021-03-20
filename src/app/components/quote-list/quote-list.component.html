@@ -1,9 +1,47 @@
 <!-- {{ dataSource | json }} -->
-<div>
-  <button mat-raised-button (click)="openDialog()">Add Quote</button>
-  <button (click)="Logout()">Logout</button>
-  <br />
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+  crossorigin="anonymous"
+/>
+<!-- <div class="container"> -->
+<div
+  class="navbar navbar-expand-lg navbar-light bg-light"
+  style="background-color: gray"
+>
   <div>
+    <h1 style="color: blue; font-weight: bold; float: left; margin-left: 30px">
+      {{ title }}
+    </h1>
+    <div style="float: right; margin-left: 1020px">
+      <!-- <form class="form-inline my-2 my-lg-0"> -->
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        mat-raised-button
+        (click)="openDialog()"
+        style="background: #00cc88"
+      >
+        <i style="color: white" class="far fa-file-alt"></i> &#160;
+        <span style="color: white"> Add Task</span>
+      </button>
+      &#160; &#160;
+      <button class="btn btn-secondary" (click)="Logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </button>
+      <!-- </form> -->
+    </div>
+  </div>
+</div>
+<!-- <div style="clear: right"></div> -->
+<br />
+<div>
+  <!-- <button mat-raised-button (click)="openDialog()">Add Quote</button>
+  <button (click)="Logout()">Logout</button> -->
+  <br />
+  <div style="float: right">
     <mat-form-field>
       <input
         matInput
@@ -11,6 +49,8 @@
         (keyup)="searchQuote($event.target.value)"
       />
     </mat-form-field>
+  </div>
+  <div>
     <br />
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <!--- Note that these columns can be defined in any order.
@@ -103,8 +143,9 @@
     </table>
 
     <mat-paginator
-      [pageSizeOptions]="[3, 5, 10, 20]"
+      [pageSizeOptions]="[5, 10, 20]"
       showFirstLastButtons
     ></mat-paginator>
   </div>
 </div>
+<!-- </div> -->

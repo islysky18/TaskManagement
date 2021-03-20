@@ -3,31 +3,91 @@
 <mat-dialog-content [formGroup]="form">
   <mat-form-field>
     <input readonly matInput placeholder="QuoteID" formControlName="QuoteID" />
+    <div
+      *ngIf="
+        form.get('QuoteType').invalid &&
+        (form.get('QuoteType').dirty || form.get('QuoteType').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="QuoteType" formControlName="QuoteType" />
+    <input
+      matInput
+      placeholder="QuoteType"
+      formControlName="QuoteType"
+      required
+    />
+    <div
+      *ngIf="
+        form.get('QuoteType').invalid &&
+        (form.get('QuoteType').dirty || form.get('QuoteType').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Contact" formControlName="Contact" />
+    <input matInput placeholder="Contact" formControlName="Contact" required />
+    <div
+      *ngIf="
+        form.get('Contact').invalid &&
+        (form.get('Contact').dirty || form.get('Contact').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Task" formControlName="Task" />
+    <input matInput placeholder="Task" formControlName="Task" required />
+    <div
+      *ngIf="
+        form.get('Task').invalid &&
+        (form.get('Task').dirty || form.get('Task').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="DueDate" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="DueDate"
+      required
+    />
     <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <div
+      *ngIf="
+        form.get('DueDate').invalid &&
+        (form.get('DueDate').dirty || form.get('DueDate').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="TaskType" formControlName="TaskType" />
+    <input
+      matInput
+      placeholder="TaskType"
+      formControlName="TaskType"
+      required
+    />
+    <div
+      *ngIf="
+        form.get('Task').invalid &&
+        (form.get('Task').dirty || form.get('Task').touched)
+      "
+      class="alert alert-danger"
+    ></div>
   </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">
-    <i class="far fa-times-circle">Close</i>
+  <button class="mat-raised-button btn-danger" (click)="close()">
+    <i class="far fa-times-circle">&#160;&#160;</i>Close
   </button>
-  <button class="mat-raised-button mat-primary" (click)="save()">Udpate</button>
+  &#160;
+  <button class="mat-raised-button mat-primary" (click)="save()">
+    <i class="far fa-save">&#160;&#160;</i>Udpate
+  </button>
 </mat-dialog-actions>
